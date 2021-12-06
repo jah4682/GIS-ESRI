@@ -1,0 +1,24 @@
+
+var intersectBMSD =Intersects(FeatureSetByName($map,"BMSD Future Land Use"), $feature)
+var intersectCounty =Intersects(FeatureSetByName($map,"CountywideFutureLandUse_withText"), $feature)
+
+
+var BMSD = null
+var COUNTY = null
+
+//Find the BMSD land use field
+for (var f in intersectBMSD){
+    BMSD = f.LAND_USE
+}
+
+//Find the County-wide land use field
+for (var f in intersectCounty){
+    County = f.LAND_USE
+}
+
+//Testing if land use field is blank. If it is blank than 'condition' value is true.
+var condition = IsEmpty(BMSD)
+
+
+// if land use field is null than 'condition' value is true and the parcel is not in the BMSD so we will return the County-wide land use. Else return the BMSD land use.
+return IIf(condition,County,BMSD)
