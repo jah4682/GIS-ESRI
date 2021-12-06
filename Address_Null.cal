@@ -1,0 +1,32 @@
+/*This is a function that builds an address.
+And test for null fields.
+If a parameter has a value it is added to the address string.
+If a parameter has a null field then we will give that parameter as string value of N/A
+*/
+
+//defining the function
+def X (param1,param2,param3,param4,param5,param6):
+
+    retVal = ""
+    if param1 is not None:
+        retVal = param1+" "
+    if param2 is not None:
+        retVal += param2+" "
+    if param3 is not None:
+        retVal += param3+" "
+    if param4 is not None:
+        retVal += param4+" "
+    if param5 is not None:
+        retVal += param5+" "
+    if param6 is not None:
+        retVal += param6[0:5]
+
+    if retVal == None:
+        retVal = "N/A"
+        return retVal
+    else:
+	return retVal
+
+//calling the function
+__esri_field_calculator_splitter__
+X (!BCPA_BCPA_SITUS_STREET_NUMBER!,!BCPA_BCPA_SITUS_STREET_DIRECTION!,!BCPA_BCPA_SITUS_STREET_NAME!,!BCPA_BCPA_SITUS_STREET_TYPE!,!CITY_NAME!,!Zip_Code_str!)
