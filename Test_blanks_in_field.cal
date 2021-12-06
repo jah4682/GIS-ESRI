@@ -1,0 +1,17 @@
+//Testing for blanks in land use field.
+var intersectLayer =Intersects(FeatureSetByName($map,"BMSD Future Land Use"), $feature)
+
+
+var BMSD = null                         //define variable
+
+//loop through list
+for (var f in intersectLayer){
+    //find the specific land use value and into variable
+    BMSD = f.LAND_USE
+}
+
+//define condition variable and test if variable is empty
+var condition = IsEmpty(BMSD)
+
+//test the condition
+return IIf(condition,"Not Available",BMSD)
